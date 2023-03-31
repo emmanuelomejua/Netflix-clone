@@ -6,9 +6,11 @@ require('dotenv').config()
 const express = require('express');
 const {json, urlencoded} = express;
 const cors = require('cors')
+const morgan = require('morgan')
 
 const authRoute = require('./routes/authRoute')
 const userRoute = require('./routes/userRoute')
+const movieRoute = require('./routes/movieRoute')
 
 
 //Database connection
@@ -20,6 +22,7 @@ const app = express()
 
 app.use(json());
 app.use(urlencoded({extended: false}));
+app.use(morgan('combined'))
 
 app.use(cors({
     origin: '*',
@@ -29,6 +32,7 @@ app.use(cors({
 
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
+app.use('/api/movies', movieRoute)
 
 const port = process.env.PORT
 
