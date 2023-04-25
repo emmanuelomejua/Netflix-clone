@@ -41,11 +41,11 @@ const Login = async (req, res) => {
     try {
         const user = await User.findOne({username: req.body.username});
         if(!user){
-            res.status(400).json('A user with this email does not exist')
+            res.status(400).json('Invalid username or password')
         } else {
             const validate = await bcrypt.compare(req.body.password, user.password)
             if(!validate){
-                res.status(400).json('Wrong password')
+                res.status(400).json('Invalid username or password')
             } else {
                 const accessToken = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.JWT_KEY, {expiresIn: '7days'})
                 const {password, ...info} = user._doc
@@ -58,4 +58,4 @@ const Login = async (req, res) => {
     }
 }
 
-module.exports = {Register, Login}
+module.exports = { Register, Login }

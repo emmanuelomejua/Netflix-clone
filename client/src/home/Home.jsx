@@ -6,16 +6,16 @@ import List from '../comps/list/List';
 
 
 
-const Home = () => {
+const Home = ({type}) => {
   return (
-    <div className='home'>
+    <main className='home'>
       <Navbar/> 
-      <Featured />
+      <Featured type=''/>
       <List/>
       <List/>
       <List/>
       <List/>
-    </div>
+    </main>
   )
 }
 
