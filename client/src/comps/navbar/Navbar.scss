@@ -1,8 +1,7 @@
 .navbar{
-    background-color: #0b0b0b;
-    opacity: .3;
     color: white;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: bold;
     width: 100%;
     position: fixed;
     top: 0;
@@ -10,7 +9,6 @@
     
    &.scrolled{
      background-color: #0b0b0b;
-     opacity: 1;
    }
 
    
@@ -71,3 +69,4 @@
         }
     }
 }
+

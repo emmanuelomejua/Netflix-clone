@@ -1,6 +1,9 @@
 .featured{
     height: 90vh;
     position: relative;
+    background-image: url('../../assets/images\ \(10\).jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 
     .category{
         position: absolute;
@@ -19,6 +22,9 @@
             border: 1px solid white;
             margin-left: 20px;
             padding: 5px;
+            option{
+                padding: 10px;
+            }
         }
     }
 

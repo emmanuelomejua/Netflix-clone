@@ -1,5 +1,5 @@
 import './featured.scss';
-import img from '../../assets/images (10).jpg'
+// import img from '../../assets/images (10).jpg'
 import img1 from '../../assets/images (4).jpg'
 import { InfoOutlined, PlayArrow } from '@mui/icons-material';
 
@@ -31,16 +31,10 @@ const Featured = ({type}) => {
 
             
         )}
-      <img 
-      src={img} 
-      alt='Featured' 
-      />
+      {/* <img src={img} alt='Featured' /> */}
 
       <div className='info'>
-        <img 
-        src={img1} 
-        alt='Info'
-        />
+        <img src={img1}  alt='Info'/>
 
         <span className='desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eius culpa modi earum aliquam laudantium cum, ad eaque odit minima incidunt nulla repellendus quisquam. Repudiandae impedit labore possimus explicabo libero.</span>
 
