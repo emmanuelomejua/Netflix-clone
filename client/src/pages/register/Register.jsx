@@ -1,6 +1,7 @@
 import './register.scss'
 import Logo from '../../assets/netflix1.jpeg'
 import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
     const [email, setEmail] = useState('')
@@ -22,7 +23,7 @@ const Register = () => {
         <div className='rWrapper'>
             <img src={Logo} alt='Logo' className='logo'/>
             
-            <button className='loginBtn'>Login</button>
+            <button className='loginBtn'><Link to='/login' className='link'>Login</Link></button>
         </div>
       </div>
 

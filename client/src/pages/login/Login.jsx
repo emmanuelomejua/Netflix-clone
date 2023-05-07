@@ -1,5 +1,6 @@
 import './login.scss'
 import Logo from '../../assets/netflix1.jpeg'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -16,11 +17,25 @@ const Login = () => {
             <h1>Welcome Back!</h1>
             <input type="email" className="" placeholder='Email'/>
             <input type="password" className="" placeholder='Password' />
-            <button>Login</button>
-            <span className='pText'>Forget Password?</span>
 
-            <span>New to Netflix? <span>Sign up now!</span></span>
-            {/* <p>This page is protected by Google reCAPTHA to ensure you're not a bot. <b>Learn More</b></p> */}
+            <section>
+              <button className='lBtn'>Login</button>
+
+              <div className="pText">
+                <div className="pTextL"> 
+                    <label htmlFor='checkbox'>Remember me</label>
+                    <input type='checkbox' defaultChecked style={{backgroundColor:'#222', color: '#222'}}/>
+                </div>
+
+                <span style={{cursor: 'pointer'}}>Need help?</span>
+              </div>
+            </section>
+            
+            <div className="summary">
+              <span>New to Netflix? <b><Link to='/register' className="link">Sign up now!</Link></b></span>
+              <p>This page is protected by Google reCAPTHA to ensure you're not a bot. <b>Learn More</b></p>
+            </div>
+  
         </form>
       </section>
 

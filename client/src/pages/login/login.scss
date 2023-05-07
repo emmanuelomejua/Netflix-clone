@@ -59,28 +59,58 @@
                 }
             }
 
-            .pText{
-                text-align: center;
-            }
+            section{
+                display: flex;
+                flex-direction: column;
 
-            span{
-                color: lightgray;
-                font-size: small;
-                b{
+
+                button{
+                    height: 40px;
+                    border-radius: 5px;
                     color: white;
+                    border: none;
+                    cursor: pointer;
+                    background-color: red;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+
+                .pText{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    color: lightgray;
+
+                    .pTextL{
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                    }
                 }
             }
 
-            button{
-                height: 40px;
-                border-radius: 5px;
-                color: white;
-                border: none;
-                cursor: pointer;
-                background-color: red;
-                font-size: 18px;
-                font-weight: 500;
+            .summary{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                span{
+                    color: lightgray;
+                    font-size: small;
+                    b{
+                        color: white;
+                    }
+                }
+                p{
+                    color: lightgray;
+                    font-size: 10px;
+                    b{
+                        color: blueviolet;
+                    }
+                }
             }
+       
+
+    
         }
     }
 
