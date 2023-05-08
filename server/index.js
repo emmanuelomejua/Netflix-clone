@@ -7,10 +7,12 @@ const express = require('express');
 const {json, urlencoded} = express;
 const cors = require('cors')
 const morgan = require('morgan')
+const {log, error} = require('console')
 
 const authRoute = require('./routes/authRoute')
 const userRoute = require('./routes/userRoute')
 const movieRoute = require('./routes/movieRoute')
+const listRoute = require('./routes/listRoute')
 
 
 //Database connection
@@ -33,9 +35,10 @@ app.use(cors({
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
 app.use('/api/movies', movieRoute)
+app.use('/api/list', listRoute)
 
 const port = process.env.PORT
 
-app.listen(port, err => {
-   !err ? console.log(`Server connected to ${port}`): console.log(err)
+app.listen(port, (err) => {
+   !err ? log(`Server connected to ${port}`): error(err)
 })

@@ -17,7 +17,7 @@ router.delete('/:id', verify, deleteUser)
 router.get('/find/:id', getUser)
 
 //GET ALL USERS
-router.get('/stats', verify, getAllUsers)
+router.get('/', verify, getAllUsers)
 
 //GET USER STATS
 router.get('/stats', verify, getStats)

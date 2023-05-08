@@ -16,7 +16,7 @@ const encryptPassword = (password) => {
 const Register = async (req, res) => {
     const {username, email, password} = req.body
 
-    const isExist = await User.findOne({username: req.body.username})
+    const isExist = await User.findOne({email: req.body.email})
     if(!isExist){
         try {
             const newUser =  new User({
@@ -39,7 +39,7 @@ const Register = async (req, res) => {
 //Login
 const Login = async (req, res) => {
     try {
-        const user = await User.findOne({username: req.body.username});
+        const user = await User.findOne({email: req.body.email});
         if(!user){
             res.status(400).json('Invalid username or password')
         } else {

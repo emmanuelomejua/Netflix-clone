@@ -11,18 +11,17 @@ const createMovie = async (req, res) => {
         res.status(500).json(error)
        }
     } else {
-        res.status(403).json('Not allowed')
+        res.status(403).json('Sorry. you are not allowed to do this')
     }
 }
 
 const updateMovie = async (req, res) => {
     if(req.user.isAdmin){
         try {
-            const movie = await Movie.findById(req.params.id, {$set: req.body}, {new: true})
-            await movie.save()
+            const movie = await Movie.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
             res.status(200).json(movie)
         } catch (error) {
-            res.status(500).json(error)
+            res.status(500).json(error.message)
         }
     } else{
         res.status(403).json('Not allowed to do this')

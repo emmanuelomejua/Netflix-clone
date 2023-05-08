@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
+//Update user
 const updateUser = async (req, res) => {
     if(req.user.id === req.params.id || req.user.isAdmin){
         if(req.body.password){
@@ -24,6 +25,7 @@ const updateUser = async (req, res) => {
     }
 } 
 
+//Delete user
 const deleteUser = async (req, res) => {
         if(req.user.id === req.params.id || req.user.isAdmin){
 
@@ -38,22 +40,24 @@ const deleteUser = async (req, res) => {
     }
 } 
 
+//Get user
 const getUser = async (req, res) => {
        try {
         const user = await User.findById(req.params.id);
         const {password, ...info} = user._doc
-            res.status(200).json(info)
+            res.status(200).json(...info)
         } catch (error) {
             res.status(500).json(error.message)
         }
 } 
 
+//All users
 const getAllUsers = async (req, res) => {
         const query = req.query.new;
     if(req.user.isAdmin){
 
         try {
-            const users = query ? await User.find().sort({_id: -1}).limit(10) : await User.find()
+            const users = query ? await User.find().sort({_id: -1}).limit(5) : await User.find()
          
             res.status(200).json(users)
         } catch (error) {
@@ -64,7 +68,8 @@ const getAllUsers = async (req, res) => {
     }
 } 
 
-const getStats = async () => {
+//Users stats
+const getStats = async (req, res) => {
     const today = new Date()
     const lastYear = today.setFullYear(today.setFullYear() - 1)
     const monthsArr = [
@@ -90,10 +95,11 @@ const getStats = async () => {
             }, {
                 $group: {
                     _id: '$month',
-                    $sum: {$sum: 1}
+                    total: {$sum: 1}
                 }
             }
         ])
+        res.status(200).json(data)
     } catch (error) {
         res.status(500).json(error.message)
     }
