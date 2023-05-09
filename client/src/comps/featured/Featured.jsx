@@ -2,16 +2,33 @@ import './featured.scss';
 // import img from '../../assets/images (10).jpg'
 import img1 from '../../assets/images (4).jpg'
 import { InfoOutlined, PlayArrow } from '@mui/icons-material';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { apiRoute } from '../../utils/APIcalls';
+
+const auth = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjYzNDBkYTEzODE0NmM5MmMyYjM4YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MzYyMzQ0NCwiZXhwIjoxNjg0MjI4MjQ0fQ.5ApOKBicX6-tlgA1kHi1hHk_TbYCO3RsIZZ_y_NfYzI'
+
+
 
 const Featured = ({type}) => {
 
-  // switch(type){
-  //   case type === 'series':
-  //     return 'Movies';
-  //   case type === 'movie':
-  //     return 'Series';
-  //   default:
-  // }
+  const [content, setContent] = useState({})
+
+  useEffect(()=> {
+    const getRandom = async () => {
+      try {
+        const res = await axios.get(`${apiRoute}movies/random?type=${type}`, {
+          headers: {
+            token: `Bearer ${auth}`
+          }
+        })
+        setContent(res.data[0])
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getRandom()
+  }, [type])
 
   return (
     <div className='featured'>
@@ -45,7 +62,7 @@ const Featured = ({type}) => {
       <div className='info'>
         <img src={img1}  alt='Info'/>
 
-        <span className='desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eius culpa modi earum aliquam laudantium cum, ad eaque odit minima incidunt nulla repellendus quisquam. Repudiandae impedit labore possimus explicabo libero.</span>
+        <span className='desc'>{content.desc}</span>
 
         <div className='buttons'>
             <button className='play'>

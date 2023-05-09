@@ -30,6 +30,9 @@ const MovieSchema = new mongoose.Schema({
     limit: {
         type: Number,
     },
+    duration: {
+        type: String,
+    },
     genre: {
         type: String,
     },

@@ -3,7 +3,8 @@ import { useRef, useState } from 'react'
 import ListItem from '../listItem/ListItem'
 import './list.scss'
 
-const List = () => {
+const List = ({list}) => {
+
 
   const [slideNumber, setSlideNumber] = useState(0)
   const [isMoved, setIsMoved] = useState(false)
@@ -22,12 +23,12 @@ const List = () => {
       setSlideNumber(slideNumber + 1)
       listRef.current.style.transform = `translateX(${-230 + distance}px)`
     }
-    console.log(distance)
+
   }
 
   return (
     <div className='list'>
-      <span className='listTitle'>Continue watching...</span>
+      <span className='listTitle'>{list.title}</span>
       <div className='wrapper'>
         <ArrowBackIosOutlined 
         className='sliderArrow left' 
@@ -36,21 +37,10 @@ const List = () => {
         />
 
             <div className='container' ref={listRef}>
-                <ListItem index={0}/>
-                <ListItem index={1}/>
-                <ListItem index={2}/>
-                <ListItem index={3}/>
-                <ListItem index={4}/>
-                <ListItem index={5}/>
-                <ListItem index={6}/>
-                <ListItem index={7}/>
-                <ListItem index={8}/>
-                <ListItem index={9}/>
-                <ListItem index={10}/>
-                <ListItem index={11}/>
-                <ListItem index={12}/>
-                <ListItem index={13}/>
-         
+              {list.content.map((item, i) => (
+                 <ListItem index={i} item={item} key={item}/>
+              ))}
+               
             </div>
         <ArrowForwardIosOutlined className='sliderArrow right' onClick={()=>handleClick('right')}/>
       </div>
