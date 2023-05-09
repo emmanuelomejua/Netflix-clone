@@ -4,11 +4,20 @@ import img1 from '../../assets/images (4).jpg'
 import { InfoOutlined, PlayArrow } from '@mui/icons-material';
 
 const Featured = ({type}) => {
+
+  // switch(type){
+  //   case type === 'series':
+  //     return 'Movies';
+  //   case type === 'movie':
+  //     return 'Series';
+  //   default:
+  // }
+
   return (
     <div className='featured'>
         {type && (
             <div className='category'>
-                <span>{type === 'movie' ? 'Movies' : 'Series'}</span>
+                <span>{type === 'series' ? 'Series': 'Movies'}</span>
 
                 <select name='genre' id='genre'>
                     <option>Genre</option>

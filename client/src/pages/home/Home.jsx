@@ -10,7 +10,7 @@ const Home = ({type}) => {
   return (
     <main className='home'>
       <Navbar/> 
-      <Featured type='movie'/>
+      <Featured type={type}/>
       <List/>
       <List/>
       <List/>

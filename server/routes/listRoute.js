@@ -4,7 +4,7 @@ const router = Router()
 
 const verify = require('../verifyToken')
 
-router.post('/', createList)
+router.post('/', verify, createList)
 
 router.delete('/:id', verify, deleteList)
 

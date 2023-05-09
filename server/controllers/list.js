@@ -3,17 +3,17 @@ const List = require('../models/List')
 //create list
 const createList = async (req, res) => {
     if(req.user.isAdmin){
-        const list = await List.create(req.body)
         try {
+            const list = new List(req.body)
             const newList =  await list.save()
             res.status(201).json(newList)
         } catch (error) {
             res.status(500).json(error)
         }
-        
     } else {
-        res.status(403).json('Sorry, you are not allowed to do this')
+        res.status(401).json('You are not allowed to do this')
     }
+  
 }
 
 //delete
@@ -54,6 +54,7 @@ const getList = async (req, res) => {
                 { $sample: { size: 10 }}
             ])
         }
+        res.status(200).json(list)
     } catch (error) {
          res.status(500).json(error)
     }

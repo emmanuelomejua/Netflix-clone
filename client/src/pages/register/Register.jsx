@@ -22,8 +22,11 @@ const Register = () => {
       <div className='rTop'>
         <div className='rWrapper'>
             <img src={Logo} alt='Logo' className='logo'/>
-            
-            <button className='loginBtn'><Link to='/login' className='link'>Login</Link></button>
+
+            <Link to='/login' className='link'>
+              <span className='loginBtn'>Login</span>
+            </Link>
+           
         </div>
       </div>
 

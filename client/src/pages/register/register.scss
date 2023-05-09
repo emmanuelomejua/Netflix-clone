@@ -21,7 +21,7 @@
                 height: 40px;
             }
 
-            .loginBtn{
+            span{
                 border: none;
                 color: white;
                 background-color: red;
@@ -29,11 +29,8 @@
                 font-weight: bold;
                 padding: 12px;
                 border-radius: 5px;
+                cursor: not-allowed;
 
-                &.hover{
-                    cursor: pointer;
-                }
-               
             }
         }
 
@@ -80,8 +77,8 @@
                 padding: 0 10px;
                 outline: none;
             }
-
-             button{
+            
+            button{
                 flex: 3;
                 border: none;
                 height: 100%;
@@ -90,8 +87,10 @@
                 font-weight: bold;
                 color: white;
                 cursor: pointer;
-             }
+            }
+       
         }
 
     }
+
 }
