@@ -5,6 +5,7 @@ import Product from './product/Product'
 import ProductList from './productList/ProductList'
 import User from './user/User'
 import UserList from './userList/UserList'
+import Login from './login/Login'
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     Product,
     ProductList,
     User,
-    UserList
+    UserList,
+    Login
 }
