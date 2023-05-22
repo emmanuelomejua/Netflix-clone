@@ -1,5 +1,19 @@
+.i{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container{
+  display: flex;
+  flex: 1;
+  margin-top: 10px;
+}
+
 .newProduct {
   flex: 4;
+  display: flex;
+  justify-content: center;
 }
 
 .addProductForm {

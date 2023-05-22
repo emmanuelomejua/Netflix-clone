@@ -1,4 +1,4 @@
-import {FeaturedInfo, Chart, WidgetSm, WidgetLg } from "../../components/index";
+import {FeaturedInfo, Chart, WidgetSm, WidgetLg, Topbar, Sidebar } from "../../components/index";
 import "./home.css";
 import { userData } from "../../dummyData";
 import { useEffect, useMemo, useState } from "react";
@@ -47,6 +47,11 @@ export default function Home() {
   // console.log(stats)
   
   return (
+    
+    <div className="i"> 
+    <Topbar />
+    <section className="container">
+    <Sidebar />
     <div className="home">
       <FeaturedInfo />
       <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
@@ -54,6 +59,8 @@ export default function Home() {
         <WidgetSm/>
         <WidgetLg/>
       </div>
+    </div>
+    </section>
     </div>
   );
 }

@@ -1,3 +1,16 @@
+.i{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container{
+  display: flex;
+  flex: 1;
+  margin-top: 10px;
+}
+
+
 .user {
   flex: 4;
   padding: 20px;
