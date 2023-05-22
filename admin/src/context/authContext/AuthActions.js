@@ -2,11 +2,11 @@ export const loginStart = () => ({
     type: 'LOGIN_START'
 })
 
-export const loginSuccess = (state) => ({
+export const loginSuccess = (user) => ({
     type: 'LOGIN_SUCCESS',
-    state: state.user
+    payload: user
 })
 
 export const loginFail = () => ({
-    type: 'LOGIN_Fail'
+    type: 'LOGIN_FAIL'
 })

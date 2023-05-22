@@ -5,31 +5,40 @@ import { Home, UserList, User, NewUser, ProductList, Product, NewProduct, Login 
 
 
 function App() {
+
+  const user = false
   return (
     <BrowserRouter> 
-      <Topbar />
-       <div className="container">
-         <Sidebar />
-         <Routes>
-
-         <Route exact path="/login" element={ <Login />}/>
-       
-          <Route exact path="/" element={ <Home />}/>
+          <>
+           <Routes>
+            <Route exact path="/login" element={ <Login />}/>
+           </Routes>
+           </>
+                <>
+                  <Topbar />
+                  <div className="container">
+                    <Sidebar />
+                    <Routes>
            
-          <Route path="/users" element={ <UserList />}/>
-          
-          <Route path="/user/:userId" element={ <User />}/>
-     
-          <Route path="/newUser" element={<NewUser />}/>
-       
-          <Route path="/products" element={<ProductList />}/>
-         
-          <Route path="/product/:productId" element={<Product />}/>
-         
-          <Route path="/newproduct" element={<NewProduct />}/>
-      
-         </Routes>
-      </div>
+                   
+                     <Route exact path="/" element={ <Home />}/>
+                      
+                     <Route path="/users" element={ <UserList />}/>
+                     
+                     <Route path="/user/:userId" element={ <User />}/>
+                
+                     <Route path="/newUser" element={<NewUser />}/>
+                  
+                     <Route path="/movies" element={<ProductList />}/>
+                    
+                     <Route path="/product/:productId" element={<Product />}/>
+                    
+                     <Route path="/newproduct" element={<NewProduct />}/>
+                 
+                    </Routes>
+                 </div>
+                 </>
+
     </BrowserRouter>
   );
 }
