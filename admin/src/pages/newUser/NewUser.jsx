@@ -1,7 +1,13 @@
+import { Sidebar, Topbar } from "../../components";
 import "./newUser.css";
 
 export default function NewUser() {
+  
   return (
+    <main className="i">
+      <Topbar/>
+      <section className="container">
+      <Sidebar/>
     <div className="newUser">
       <h1 className="newUserTitle">New User</h1>
       <form className="newUserForm">
@@ -50,5 +56,7 @@ export default function NewUser() {
         <button className="newUserButton">Create</button>
       </form>
     </div>
+      </section>
+    </main>
   );
 }

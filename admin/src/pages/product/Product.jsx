@@ -6,6 +6,10 @@ import { Publish } from "@mui/icons-material";
 
 export default function Product() {
   return (
+    <main className="i">
+        <Topbar/>
+        <section className="container">
+        < Sidebar/>
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Product</h1>
@@ -71,6 +75,8 @@ export default function Product() {
           </form>
       </div>
     </div>
+        </section>
+    </main>
 
   );
 }

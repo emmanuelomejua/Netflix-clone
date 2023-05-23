@@ -8,7 +8,7 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "./user.css";
-import { Topbar } from "../../components";
+import { Sidebar, Topbar } from "../../components";
 
 export default function User() {
   return (
@@ -16,7 +16,7 @@ export default function User() {
       <Topbar/>
 
       <section className="container">
-
+      <Sidebar/>
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>

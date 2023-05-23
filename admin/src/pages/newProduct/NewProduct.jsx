@@ -5,7 +5,7 @@ export default function NewProduct() {
   return (
         <main className="i">
             <Topbar/>
-            <section>
+            <section className="container">
               <Sidebar/>
             <div className="newProduct">
               <h1 className="addProductTitle">New Product</h1>
@@ -32,7 +32,7 @@ export default function NewProduct() {
                 <button className="addProductButton">Create</button>
               </form>
             </div>
-            </section>
+          </section>
         </main>
 
   );
