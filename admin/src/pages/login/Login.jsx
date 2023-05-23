@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './login.css'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/authContext/AuthContext'
+import { LoginCall } from '../../context/authContext/apiCalls'
 
 const Login = () => {
 
@@ -9,9 +10,9 @@ const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const {fetching, dispatch} = useContext(AuthContext)
 
-const handleClick = async (e) => {
+const handleClick = (e) => {
   e.preventDefault()
-  
+  LoginCall({email, password}, dispatch)
 }
 
   return (
@@ -32,7 +33,7 @@ const handleClick = async (e) => {
         className="loginInput"
         />
 
-        <button className="loginBtn" onClick={handleClick}>Login</button>
+        <button className="loginBtn" disabled={fetching} onClick={handleClick}>Login</button>
       </form>
     </section>
   )

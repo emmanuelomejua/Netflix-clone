@@ -3,42 +3,45 @@ import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { productRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Sidebar, Topbar } from "../../components";
+import { MoviesContext } from '../../context/movieContext/MovieContext'
+import { getMovieCalls } from '../../context/movieContext/apiCalls'
 
 export default function ProductList() {
   const [data, setData] = useState(productRows);
+  const {movies, dispatch} = useContext(MoviesContext)
+
+  useEffect(()=>{
+    getMovieCalls(dispatch)
+  },[dispatch])
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    // setData(data.filter((item) => item.id !== id));
   };
+
+  console.log(movies)
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "product",
-      headerName: "Product",
+      field: "movies",
+      headerName: "Movies",
       width: 200,
       renderCell: (params) => {
         return (
           <div className="productListItem">
             <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.name}
+            {params.row.title}
           </div>
         );
       },
     },
-    { field: "stock", headerName: "Stock", width: 200 },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 120,
-    },
-    {
-      field: "price",
-      headerName: "Price",
-      width: 160,
-    },
+    { field: "genre", headerName: "Genre", width: 120 },
+    { field: "year", headerName: "Year", width: 120 },
+    { field: "limit", headerName: "Limit", width: 120 },
+    { field: "isSeries", headerName: "IsSeries", width: 120 },
+
     {
       field: "action",
       headerName: "Action",
@@ -66,11 +69,12 @@ export default function ProductList() {
       <Sidebar/>
         <div className="productList">
           <DataGrid
-            rows={data}
+            rows={movies}
             disableSelectionOnClick
             columns={columns}
             pageSize={8}
             checkboxSelection
+            getRowId={(r) => r._id}
             />
         </div>
       </section>

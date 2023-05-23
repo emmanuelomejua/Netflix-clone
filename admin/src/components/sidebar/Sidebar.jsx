@@ -12,10 +12,16 @@ import {
   WorkOutline,
   Report,
   PlayCircleFilledOutlined,
+  ExitToAppRounded,
 } from "@mui/icons-material";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 export default function Sidebar() {
+
+  const { dispatch } = useContext(AuthContext)
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -94,6 +100,10 @@ export default function Sidebar() {
             <li className="sidebarListItem">
               <Report className="sidebarIcon" />
               Reports
+            </li>
+            <li className="sidebarListItem" onClick={()=>dispatch({type: 'LOGOUT'})}>
+              <ExitToAppRounded className="sidebarIcon" />
+              Logout
             </li>
           </ul>
         </div>

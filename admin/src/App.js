@@ -1,21 +1,25 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, UserList, User, NewUser, ProductList, Product, NewProduct, Login } from './pages/index'
+import { useContext } from "react";
+import { AuthContext } from "./context/authContext/AuthContext";
 
 
 function App() {
 
-  const user = false
+  const user = useContext(AuthContext)
+
 
   return (
     <BrowserRouter> 
 
         <Routes>
-
-          <Route exact path="/login" element={ <Login />}/>
-                   
-          <Route exact path="/" element={ <Home />}/>
+          <Route exact path="/login" element={user ? <Login /> :  <Home/>}/>
+ 
+          <Route exact path="/" element={user ? <Home /> : <Login/>}/>
                       
+         {  user &&
+         <>
           <Route path="/users" element={ <UserList />}/>
                      
           <Route path="/user/:userId" element={ <User />}/>
@@ -27,8 +31,12 @@ function App() {
           <Route path="/product/:productId" element={<Product />}/>
                     
           <Route path="/newproduct" element={<NewProduct />}/>
+          
+         </>
+          }
                  
-        </Routes>
+
+       </Routes>
 
     </BrowserRouter>
   );
