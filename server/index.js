@@ -22,17 +22,15 @@ const connectDatabase = require('./config/db')
 // express app ==> bind with http pipeline
 const app = express()
 
+
+//middlewares
 app.use(json());
 app.use(urlencoded({extended: false}));
 app.use(morgan('common'))
 app.use(cors())
 
-// app.use(cors({
-//     origin: '*',
-//     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-type', 'Authorization']
-// }))
 
+//routes uses
 app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
 app.use('/api/movies', movieRoute)

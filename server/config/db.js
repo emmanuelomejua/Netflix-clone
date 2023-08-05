@@ -6,7 +6,7 @@ const { set, connect } = mongoose
 const {log, error} = require('console')
 
 
-const db_url = process.env.DB_URI;
+const db_url = process.env.CONNECT_DB;
 
 set('strictQuery', true);
 
