@@ -1,8 +1,6 @@
 import axios from "axios"
-import { getMoviesFail, getMoviesStart, getMoviesSuccess } from "./MovieActions"
+import { deleteMoviesFail, deleteMoviesStart, deleteMoviesSuccess, getMoviesFail, getMoviesStart, getMoviesSuccess } from "./MovieActions"
 import { apiRoute } from "../../utils/apiRoute"
-
-const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjYzNDBkYTEzODE0NmM5MmMyYjM4YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDY4NzcxNywiZXhwIjoxNjg1MjkyNTE3fQ.8qzclHh2Fau29pI6rLdQ3vsaa17mECOUEnnzAw5woy4'
 
 
 export const getMovieCalls = async (dispatch) => {
@@ -11,11 +9,42 @@ export const getMovieCalls = async (dispatch) => {
     try {
         const res = await axios.get(apiRoute + 'movies', {
             headers: {
-                token: `Bearer ${TOKEN}`
+                token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken
             }
         })
        dispatch(getMoviesSuccess(res.data))
     } catch (error) {
         dispatch(getMoviesFail())
+    }
+}
+
+export const createMovieCalls = async (dispatch) => {
+    dispatch(getMoviesStart())
+
+    try {
+        const res = await axios.get(apiRoute + 'movies', {
+            headers: {
+                token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken
+            }
+        })
+       dispatch(getMoviesSuccess(res.data))
+    } catch (error) {
+        dispatch(getMoviesFail())
+    }
+}
+
+
+export const deleteMovieCalls = async (id, dispatch) => {
+    dispatch(deleteMoviesStart())
+
+    try {
+         await axios.delete(apiRoute + 'movies/' + id, {
+            headers: {
+                token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken
+            }
+        })
+       dispatch(deleteMoviesSuccess(id))
+    } catch (error) {
+        dispatch(deleteMoviesFail())
     }
 }
