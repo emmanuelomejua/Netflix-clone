@@ -47,7 +47,7 @@ const Login = async (req, res) => {
             if(!validate){
                 res.status(400).json('Invalid username or password')
             } else {
-                const accessToken = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.JWT_KEY, {expiresIn: '7days'})
+                const accessToken = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.JWT_KEY, {expiresIn: '1h'})
                 const {password, ...info} = user._doc
                 res.status(200).json({...info, accessToken})
             }

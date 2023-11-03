@@ -1,5 +1,5 @@
 import axios from "axios"
-import { deleteMoviesFail, deleteMoviesStart, deleteMoviesSuccess, getMoviesFail, getMoviesStart, getMoviesSuccess } from "./MovieActions"
+import { createMovieFail, createMovieStart, createMovieSuccess, deleteMoviesFail, deleteMoviesStart, deleteMoviesSuccess, getMoviesFail, getMoviesStart, getMoviesSuccess } from "./MovieActions"
 import { apiRoute } from "../../utils/apiRoute"
 
 
@@ -18,18 +18,18 @@ export const getMovieCalls = async (dispatch) => {
     }
 }
 
-export const createMovieCalls = async (dispatch) => {
-    dispatch(getMoviesStart())
+export const createMovieCalls = async (movie, dispatch) => {
+    dispatch(createMovieStart())
 
     try {
-        const res = await axios.get(apiRoute + 'movies', {
+        const res = await axios.post(apiRoute + 'movies', movie, {
             headers: {
                 token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).accessToken
             }
         })
-       dispatch(getMoviesSuccess(res.data))
+       dispatch(createMovieSuccess(res.data))
     } catch (error) {
-        dispatch(getMoviesFail())
+        dispatch(createMovieFail())
     }
 }
 

@@ -25,6 +25,20 @@ export const createMovieFail = () => ({
     type: 'CREATE_MOVIE_FAIL'
 })
 
+//update
+export const updateMovieStart = () => ({
+    type: 'UPDATE_MOVIE_START'
+})
+
+export const updateMovieSuccess = (movie) => ({
+    type: 'UPDATE_MOVIE_SUCCESS',
+    payload: movie
+})
+
+export const updateMovieFail = () => ({
+    type: 'UPDATE_MOVIE_FAIL'
+})
+
 //delete
 export const deleteMoviesStart = () => ({
     type: 'DELETE_MOVIES_START'
