@@ -2,7 +2,8 @@ import { useState } from 'react'
 import './login.css'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/authContext/AuthContext'
-import { LoginCall } from '../../context/authContext/apiCalls'
+import axios from 'axios'
+import { apiRoute } from '../../utils/apiRoute'
 
 const Login = () => {
 
@@ -10,9 +11,19 @@ const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const {fetching, dispatch} = useContext(AuthContext)
 
-const handleClick = (e) => {
+const handleClick = async (e) => {
   e.preventDefault()
-  LoginCall({email, password}, dispatch)
+  dispatch({type: 'LOGIN_START'})
+
+  try {
+    const res = await axios.post(apiRoute + 'auth/login', {
+      email,
+      password
+    })
+    dispatch({type: 'LOGIN_SUCCESS', payload: res.data}) && window.location.replace('/')
+  } catch (error) {
+    dispatch({type: 'LOGIN_FAIL'})
+  }
 }
 
   return (

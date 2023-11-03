@@ -2,12 +2,9 @@ import { createContext, useReducer, useEffect } from "react"
 import AuthReducer from "./AuthReducer"
 
 const INITIAL_STATE = {
-    name: 'user',
-    state: {
-        user: localStorage.getItem('user') ||  null,
-        error: null,
-        fetching: false,
-    }
+    user: null || JSON.parse(localStorage.getItem('user')),
+    error: null,
+    fetching: false,
 }
 
 export const AuthContext = createContext(INITIAL_STATE)
