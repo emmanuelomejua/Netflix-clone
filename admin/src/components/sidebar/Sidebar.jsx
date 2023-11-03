@@ -22,6 +22,10 @@ export default function Sidebar() {
 
   const { dispatch } = useContext(AuthContext)
 
+  const handleLogout = () => {
+    dispatch({type: 'LOGOUT'})
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -101,7 +105,7 @@ export default function Sidebar() {
               <Report className="sidebarIcon" />
               Reports
             </li>
-            <li className="sidebarListItem" onClick={()=>dispatch({type: 'LOGOUT'})}>
+            <li className="sidebarListItem" onClick={handleLogout}>
               <ExitToAppRounded className="sidebarIcon" />
               Logout
             </li>

@@ -11,7 +11,7 @@ export const LoginCall = async (user, dispatch) => {
 
     try {
         const res = await axios.post(apiRoute + 'auth/login', user)
-        res.data.isAdmin  &&  dispatch(loginSuccess(res.data)) && window.location.replace('/')
+        dispatch(loginSuccess(res.data)) && window.location.replace('/')
        
     } catch (error) {
         dispatch(loginFail())

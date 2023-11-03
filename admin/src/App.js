@@ -9,6 +9,7 @@ function App() {
 
   const user = useContext(AuthContext)
 
+  console.log(user)
 
   return (
     <BrowserRouter> 
@@ -17,23 +18,18 @@ function App() {
           <Route exact path="/login" element={user ? <Login /> :  <Home/>}/>
  
           <Route exact path="/" element={user ? <Home /> : <Login/>}/>
-                      
-         {  user &&
-         <>
-          <Route path="/users" element={ <UserList />}/>
+
+          <Route path="/users" element={user ? <UserList />: <Login/>}/>
                      
-          <Route path="/user/:userId" element={ <User />}/>
+          <Route path="/user/:userId" element={user ? <User />: <Login/>}/>
                 
-          <Route path="/newUser" element={<NewUser />}/>
+          <Route path="/newUser" element={user ?<NewUser />: <Login/>}/>
                   
-          <Route path="/movies" element={<ProductList />}/>
+          <Route path="/movies" element={user ?<ProductList />: <Login/>}/>
                     
-          <Route path="/product/:productId" element={<Product />}/>
+          <Route path="/product/:productId" element={user ?<Product />: <Login/>}/>
                     
-          <Route path="/newproduct" element={<NewProduct />}/>
-          
-         </>
-          }
+          <Route path="/newproduct" element={user ?<NewProduct />: <Login/>}/>
                  
 
        </Routes>
