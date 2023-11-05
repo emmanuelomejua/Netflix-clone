@@ -20,7 +20,7 @@ const handleClick = async (e) => {
       email,
       password
     })
-    dispatch({type: 'LOGIN_SUCCESS', payload: res.data}) && window.location.replace('/')
+    res.data.isAdmin && dispatch({type: 'LOGIN_SUCCESS', payload: res.data}) && window.location.replace('/')
   } catch (error) {
     dispatch({type: 'LOGIN_FAIL'})
   }
